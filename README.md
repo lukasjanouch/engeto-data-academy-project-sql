@@ -1,4 +1,4 @@
-# `# Projekt z SQL` 
+# Projekt z SQL 
 
 # `## Cíl` 
 
