@@ -26,14 +26,27 @@ například u těžby a dobývání čtyřikrát. Další select také použív�
 v_payroll_difference_data a zobrazuje pouze ta odvětví, u kterých pokles oproti
 minulému roku nikdy nenastal. Jsou to zdravotní a sociální péče, zpracovatelský
 průmysl a ostatní činnosti. Díky poslednímu selectu se dá zjistit, že mzdy v
-posledním srovnatelném období jsou oproti prvnímu u všech odvětví vždy vyšší,
-což znamená že mzdy vždy celkově vzrostly a klesly pouze lokálně.
+posledním srovnatelném období jsou oproti prvnímu srovnatelnému období u všech 
+odvětví vždy vyšší, což znamená že mzdy vždy celkově vzrostly a klesly pouze 
+lokálně.
 
 2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední
 srovnatelné období v dostupných datech cen a mezd?
 
+> Ve výsledku dotazu je vidět, kolik litrů mléka a kilogramů chleba je možno 
+koupit za mzdu v daném odvětví. Nejprve jednotlivě za každé odvětví v prvním 
+srovnatelném období dostupných dat - v roce 2006 a dále v každém odvětví v 
+posledním srovnatelném období - v roce 2018. 
+
 3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální
 meziroční nárůst)?
+
+> V dotazu se nejprve spočítá procentuální změna v ceně potraviny z roku na rok 
+vydělením rozdílu současné a loňské ceny současnou cenou a podíl je vynásoben 
+stem. Další select zjišťuje průměr těchto změn v ceně u každé kategorie potravin.
+Nakonec se vrací ta kategorie, jejíž průměr změn v ceně je nejmenší z těch, které 
+jsou větší než nula. Hledáme hodnoty větší než nula, protože nás zajímá zdražování 
+a z nich nejmenší je ta cena, která se mění nejpomaleji.   
 
 4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než
 růst mezd (větší než 10 %)?
