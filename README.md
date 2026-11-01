@@ -51,6 +51,12 @@ a z nich nejmenší je ta cena, která se mění nejpomaleji.
 4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než
 růst mezd (větší než 10 %)?
 
+> Zde se ke každému roku počítá průměrný plat za všechny obory v databázi (kategorie 
+mezd) a průměrná cena potraviny za všechny druhy potravin (kategorie cen). Po zjištění 
+procentuálních rozdílů cen a mezd oproti předešlému roku je zjištěn rozdíl mezi těmito 
+dvěma hodnotami. Největší rozdíl procentuálním růstem cen a mezd je 6,65. To znamená, 
+že růst cen byl maximálně o 6,65 % vyšší a nikdy nebyl vyšší než 10 %.   
+
 5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP
 vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve
 stejném nebo následujícím roce výraznějším růstem?
