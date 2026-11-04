@@ -61,3 +61,10 @@ dvěma hodnotami. Největší rozdíl procentuálním růstem cen a mezd je 6,65
 vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve
 stejném nebo následujícím roce výraznějším růstem?
 
+> Z dat je patrné, že HDP může mít vliv na změny ve mzdách a cenách, ale ne vždy 
+se tyto proměnné chovají úplně stejně jako HDP, protože jsou ovlivněny i jinými 
+faktory. Například v roce 2009 sice HDP a ceny potravin klesly, ale mzdy navzdory 
+tomu vzrostly. V roce 2014 naopak HDP i mzdy vzrostly, zatímco ceny potravin rostly 
+jen velmi mírně a v letech 2015 a 2016 došlo k jejich poklesu, odkud opět rostly 
+společně s oživením HDP v roce 2017.   
+
