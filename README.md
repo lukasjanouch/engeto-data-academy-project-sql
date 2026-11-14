@@ -1,4 +1,4 @@
-[🇬🇧 English](README.md) | 🇨🇿 Čeština
+🇬🇧 English | [🇨🇿 Čeština](README.cs.md)
 
 ---
 
