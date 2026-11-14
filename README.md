@@ -42,6 +42,25 @@ is not relevant to the research questions.
 
 2. t_lukas_janouch_project_SQL_secondary_final
 
+> The second table combines the original countries and economies tables using a country-related column.
+It contains additional interesting data regarding European countries for the same period as the
+t_lukas_janouch_project_SQL_primary_final table—specifically, from 2006 to 2018. The table
+includes columns for year, country, GDP, the Gini coefficient, and population.
+
+> Included with the table are queries that rank countries based on the value of their
+Gini coefficient, as well as queries that rank them by GDP. Window functions are used
+to display the country's rank. The file also contains queries to determine the average GDP
+and the average Gini coefficient for the Czech Republic over the observed period.
+For instance, during the period under review, the Czech Republic moved from sixth to second
+place in terms of the Gini coefficient. The Gini coefficient indicates how evenly
+wealth is distributed among individuals within a given country. A value of 0% would mean
+that everyone possesses an equal share, while 100% would mean that all wealth is owned by a single person.
+The Gini coefficient for the Czech Republic hovers around 25.99.
+Regarding GDP, the Czech Republic frequently ranks 22nd, though it has held the 20th position
+over the last two years. The average GDP of the Czech Republic during the observed period
+is $218.66 billion. Germany, which consistently ranks first, has an average GDP of
+$3.57 trillion for the same period.
+
 ## Research Questions 
 
 1. Do wages grow across all industries over the years, or do they drop in some?

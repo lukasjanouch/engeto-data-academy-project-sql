@@ -41,6 +41,25 @@ odvětví a toho se výzkumné otázky netýkají.
 
 2. t_lukas_janouch_project_SQL_secondary_final
 
+> Druhá tabulka spojuje původní tabulky countries a economies přes sloupec států.
+Obsahuje další zajímavé údaje o evropských státech ve stejném odobí jako v tabulce 
+t_lukas_janouch_project_SQL_primary_final, tedy od roku 2006 do roku 2018. Tabulka 
+má sloupce rok, stát, HDP, GINI koeficient a populace. 
+
+> K tabulce jsou přiloženy dotazy, jejichž výsledkem jsou země seřazené podle výšky 
+GINI koeficientu a ve druhém dotazu podle výšky HDP. Díky window functions lze 
+znázornit i pořadí země. Soubor obsahuje i dotazy ke zjištění průměrného HDP a 
+průměrného GINI koeficientu České republiky za sledované období.
+Například Česká republika se během sledovaného období dostala ze šestého na druhé 
+místo, co se GINI koeficientu týče. GINI koeficient znázorňuje, jak rovnoměrně je 
+majetek v dané zemi rozdělen mezi jednotlivce. 0% by znamenalo, že všichni mají 
+stejně a 100%, že všechen majetek vlastní jeden člověk. GINI České republiky se 
+pohybuje okolo hodnoty 25,99. 
+Ohledně HDP se Česká republika nachází často na 22. místě a v posledních dvou letech 
+na 20. Průměrné HDP České republiky za sledované období je 218,66 miliard $. Německo 
+nacházející se vždy na prvním místě má za sledované období průměrné HDP 3,57 bilionu 
+$. 
+
 ## Výzkumné otázky 
 
 1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
