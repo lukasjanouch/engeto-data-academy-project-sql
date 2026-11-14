@@ -10,6 +10,33 @@ dostupnosti potravin na základě průměrných příjmů za určité časové o
 Projekt navíc obsahuje i data o dalších evropských státech ve stejném období
 jako primární přehled pro ČR.
 
+## Základní tabulky
+V této části jsou popsány tabulky, ze kterých lze získat odpovědi na výzkumné 
+otázky.
+
+1. t_lukas_janouch_project_SQL_primary_final
+
+> Tato tabulka obsahuje data mezd a cen potravin za Českou republiku sjednocená 
+na totožné porovnatelné období – společné roky. Vznikla tedy z původních tabulek 
+v databázi - czechia_payroll, czechia_price, czechia_payroll_value_type, 
+czechia_payroll_unit, czechia_payroll_calculation, czechia_payroll_industry_branch,
+czechia_price_category a czechia_region. První dvě tabulky z výčtu - tabulka mezd a 
+tabulka cen vybraných potravin jsou propojeny pomocí roku, za který mzda nebo cena 
+platí. Aby byly hodnoty srovnatelné, bylo potřeba je zprůměrovat a vznikly sloupce 
+yearly_payroll a yearly_price, tedy roční mzda a roční cena. Mzdy byly původně 
+uvedeny za každý kvartál a ceny potravin za několik dní, například od 13. do 17. 
+listopadu. Rok je proto z datumu uvedený u ceny potraviny získáván pomocí funkce 
+date_part(). 
+
+V původní tabulce mezd jsou uvedeny hodnoty pro oba dva způsoby kalkulace mezd - 
+pro fyzický i přepočtený. V klauzuli WHERE dotazu pro vytvoření tabulky je vybrán 
+přepočtený, protože zohledňuje i to, že někteří zaměstanci pracují pouze na 
+částečný úvazek. Dále jsou zde data omezena pouze na mzdy, co se týče hodnoty 
+czechia_payroll_value_type, protože druhým typem je počet zaměstaných osob v 
+odvětví a toho se výzkumné otázky netýkají. 
+
+2. t_lukas_janouch_project_SQL_secondary_final
+
 ## Výzkumné otázky 
 
 1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
