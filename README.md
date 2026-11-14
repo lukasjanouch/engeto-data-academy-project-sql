@@ -1,97 +1,107 @@
-# Projekt z SQL 
+[🇬🇧 English](README.md) | 🇨🇿 Čeština
 
-## Cíl 
+---
 
-Cílem projektu bylo odpovědět na otázky, které se týkaly dostupnosti základních
-potravin pro širokou veřejnost, jako kdybychom pracovali pro organizaci
-zabývající se životní úrovní občanů. Hlavní úkol spočíval v porovnání
-dostupnosti potravin na základě průměrných příjmů za určité časové období.
+# SQL Project
 
-Projekt navíc obsahuje i data o dalších evropských státech ve stejném období
-jako primární přehled pro ČR.
+## Objective 
 
-## Základní tabulky
-V této části jsou popsány tabulky, ze kterých lze získat odpovědi na výzkumné 
-otázky.
+The goal of the project was to answer questions concerning the affordability of 
+basic food items for the general public, simulating the role of an organization 
+focused on citizens' living standards. The main task consisted of comparing 
+food affordability based on average incomes over a specific period.
+
+Additionally, the project includes data on other European countries for the 
+same period as a primary overview compared to the Czech Republic.
+
+## Main Tables
+This section describes the tables used to obtain answers to the research questions.
 
 1. t_lukas_janouch_project_SQL_primary_final
 
-> Tato tabulka obsahuje data mezd a cen potravin za Českou republiku sjednocená 
-na totožné porovnatelné období – společné roky. Vznikla tedy z původních tabulek 
-v databázi - czechia_payroll, czechia_price, czechia_payroll_value_type, 
-czechia_payroll_unit, czechia_payroll_calculation, czechia_payroll_industry_branch,
-czechia_price_category a czechia_region. První dvě tabulky z výčtu - tabulka mezd a 
-tabulka cen vybraných potravin jsou propojeny pomocí roku, za který mzda nebo cena 
-platí. Aby byly hodnoty srovnatelné, bylo potřeba je zprůměrovat a vznikly sloupce 
-yearly_payroll a yearly_price, tedy roční mzda a roční cena. Mzdy byly původně 
-uvedeny za každý kvartál a ceny potravin za několik dní, například od 13. do 17. 
-listopadu. Rok je proto z datumu uvedený u ceny potraviny získáván pomocí funkce 
-date_part(). 
+> This table contains payroll and food price data for the Czech Republic unified 
+to an identical comparable period—shared years. It was created from the original 
+database tables: czechia_payroll, czechia_price, czechia_payroll_value_type, 
+czechia_payroll_unit, czechia_payroll_calculation, czechia_payroll_industry_branch, 
+czechia_price_category, and czechia_region. The first two tables from this list 
+(the payroll table and the selected food prices table) are joined using the year 
+for which the wage or price applies. To make the values comparable, they had to 
+be averaged, creating the columns yearly_payroll and yearly_price, representing 
+the annual wage and annual price respectively. Wages were originally given per 
+quarter and food prices for several days, such as November 13th to 17th. 
+Therefore, the year is extracted from the food price date using the date_part() 
+function.
 
-V původní tabulce mezd jsou uvedeny hodnoty pro oba dva způsoby kalkulace mezd - 
-pro fyzický i přepočtený. V klauzuli WHERE dotazu pro vytvoření tabulky je vybrán 
-přepočtený, protože zohledňuje i to, že někteří zaměstanci pracují pouze na 
-částečný úvazek. Dále jsou zde data omezena pouze na mzdy, co se týče hodnoty 
-czechia_payroll_value_type, protože druhým typem je počet zaměstaných osob v 
-odvětví a toho se výzkumné otázky netýkají. 
+> In the original payroll table, values are listed for two calculation 
+methods—both physical and recalculated (full-time equivalent). In the WHERE 
+clause of the query creating this table, the recalculated method is selected 
+because it accounts for employees working part-time. Furthermore, the data 
+here is restricted only to wages regarding czechia_payroll_value_type, as the 
+second type represents the number of employed persons in an industry, which 
+is not relevant to the research questions.
 
 2. t_lukas_janouch_project_SQL_secondary_final
 
-## Výzkumné otázky 
+## Research Questions 
 
-1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
+1. Do wages grow across all industries over the years, or do they drop in some?
 
-> Základ selectů vracejících odpovědi na tuto otázku tvoří pohled
-v_payroll_diference_data. Oproti Common table expressionu je u pohledu výhoda,
-že lze dotaz napsat pouze jednou. Ukazuje, jak se u jednotlivých odvětvích
-měnily mzdy rok po roce a díky window functions zobrazuje i rozdíl mzdy v daném
-roce oproti loňsku.
+> The base of the SELECT statements providing answers to this question is formed 
+by the view v_payroll_diference_data. Compared to a Common Table Expression (CTE), 
+a view has the advantage of writing the query only once. It shows how wages changed 
+year-over-year in individual industries and, thanks to window functions, also displays 
+the wage difference in a given year compared to the previous year.
 
-> První samostatný select pak vrací pouze ty řádky z předchozího výsledku, kde
-došlo k poklesu mzdy oproti minulému roku. Někde nastal pokles vícekrát,
-například u těžby a dobývání čtyřikrát. Další select také používá pohled
-v_payroll_difference_data a zobrazuje pouze ta odvětví, u kterých pokles oproti
-minulému roku nikdy nenastal. Jsou to zdravotní a sociální péče, zpracovatelský
-průmysl a ostatní činnosti. Díky poslednímu selectu se dá zjistit, že mzdy v
-posledním srovnatelném období jsou oproti prvnímu srovnatelnému období u všech 
-odvětví vždy vyšší, což znamená že mzdy vždy celkově vzrostly a klesly pouze 
-lokálně.
+> The first independent select then returns only those rows from the previous 
+result where a wage drop occurred compared to the previous year. In some cases, 
+a drop occurred multiple times, for instance, four times in mining and quarrying. 
+Another select also uses the v_payroll_difference_data view and displays only 
+those industries where a drop compared to the previous year never occurred: human 
+health and social work activities, manufacturing, and other service activities. 
+Thanks to the final select, it can be ascertained that wages in the last comparable 
+period are always higher compared to the first comparable period across all 
+industries, meaning that overall wages always grew and dropped only locally.
 
-2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední
-srovnatelné období v dostupných datech cen a mezd?
+2. How many liters of milk and kilograms of bread can be bought for the first 
+and the last comparable period in the available price and wage data?
 
-> Ve výsledku dotazu je vidět, kolik litrů mléka a kilogramů chleba je možno 
-koupit za mzdu v daném odvětví. Nejprve jednotlivě za každé odvětví v prvním 
-srovnatelném období dostupných dat - v roce 2006 a dále v každém odvětví v 
-posledním srovnatelném období - v roce 2018. 
+> The query result shows how many liters of milk and kilograms of bread can be 
+purchased with the wage in a given industry—first individually for each industry 
+in the first comparable period of available data (the year 2006) and then for 
+each industry in the last comparable period (the year 2018). 
 
-3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální
-meziroční nárůst)?
+3. Which food category has the slowest price growth (showing the lowest 
+percentage year-over-year increase)?
 
-> V dotazu se nejprve spočítá procentuální změna v ceně potraviny z roku na rok 
-vydělením rozdílu současné a loňské ceny současnou cenou a podíl je vynásoben 
-stem. Další select zjišťuje průměr těchto změn v ceně u každé kategorie potravin.
-Nakonec se vrací ta kategorie, jejíž průměr změn v ceně je nejmenší z těch, které 
-jsou větší než nula. Hledáme hodnoty větší než nula, protože nás zajímá zdražování 
-a z nich nejmenší je ta cena, která se mění nejpomaleji.   
+> The query first calculates the percentage change in food price from year to 
+year by dividing the difference between the current and last year's price by 
+the current price and multiplying the fraction by 100. Another select determines 
+the average of these price changes for each food category. Finally, it returns 
+the category whose average price change is the smallest among those greater 
+than zero. Values greater than zero are sought because we are interested in 
+price increases (inflation), and the smallest among them represents the 
+slowest-changing price.
 
-4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než
-růst mezd (větší než 10 %)?
+4. Is there a year in which the year-over-year food price increase was 
+significantly higher than wage growth (greater than 10%)?
 
-> Zde se ke každému roku počítá průměrný plat za všechny obory v databázi (kategorie 
-mezd) a průměrná cena potraviny za všechny druhy potravin (kategorie cen). Po zjištění 
-procentuálních rozdílů cen a mezd oproti předešlému roku je zjištěn rozdíl mezi těmito 
-dvěma hodnotami. Největší rozdíl procentuálním růstem cen a mezd je 6,65. To znamená, 
-že růst cen byl maximálně o 6,65 % vyšší a nikdy nebyl vyšší než 10 %.   
+> Here, the average salary across all sectors in the database (wage categories) 
+and the average food price across all food types (price categories) are 
+calculated for each year. After determining the percentage differences in 
+prices and wages compared to the previous year, the difference between these 
+two values is calculated. The largest difference between percentage price and 
+wage growth is 6.65. This means that price growth was at most 6.65% higher and 
+never exceeded 10%.  
 
-5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP
-vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve
-stejném nebo následujícím roce výraznějším růstem?
+5. Does the level of GDP have an impact on changes in wages and food prices? 
+In other words, if GDP grows more significantly in one year, does it manifest 
+as a more significant growth in food prices or wages in the same or the following 
+year?
 
-> Z dat je patrné, že HDP může mít vliv na změny ve mzdách a cenách, ale ne vždy 
-se tyto proměnné chovají úplně stejně jako HDP, protože jsou ovlivněny i jinými 
-faktory. Například v roce 2009 sice HDP a ceny potravin klesly, ale mzdy navzdory 
-tomu vzrostly. V roce 2014 naopak HDP i mzdy vzrostly, zatímco ceny potravin rostly 
-jen velmi mírně a v letech 2015 a 2016 došlo k jejich poklesu, odkud opět rostly 
-společně s oživením HDP v roce 2017.   
+> It is evident from the data that GDP may influence changes in wages and prices, 
+but these variables do not always behave entirely identically to GDP because 
+they are also affected by other factors. For example, in 2009, although GDP and 
+food prices dropped, wages grew despite this. Conversely, in 2014, both GDP and 
+wages grew, while food prices grew only very slightly, followed by a drop in 2015 
+and 2016, after which they grew again alongside the GDP recovery in 2017.
 
